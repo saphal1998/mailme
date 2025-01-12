@@ -84,43 +84,11 @@
 			font-weight: bold;
 			cursor: pointer;
 			transition: background-color 0.3s ease, transform 0.2s ease;
-			position: relative;
-			overflow: hidden;
 		}
 
 		button[type="submit"]:hover {
 			background-color: #45a049;
 			transform: scale(1.05);
-		}
-
-		/* Paper plane animation */
-		.plane {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%) scale(0);
-			width: 20px;
-			height: 20px;
-			background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Paper_plane_icon.svg') no-repeat center;
-			background-size: contain;
-			animation: fly 1s ease-in-out forwards;
-		}
-
-		@keyframes fly {
-			0% {
-				transform: translate(-50%, -50%) scale(1);
-				opacity: 1;
-			}
-
-			50% {
-				transform: translate(150%, -150%) scale(1.5);
-				opacity: 0.7;
-			}
-
-			100% {
-				transform: translate(200%, -200%) scale(0.8);
-				opacity: 0;
-			}
 		}
 
 		/* Footer text */
@@ -164,35 +132,15 @@
 </head>
 
 <body>
-	<form id="emailForm" action="/mailme" method="post">
+	<form action="/mailme" method="post">
 		<h1 id="heading">📧 Send Yourself an Email</h1>
 		<p id="emphasis">⚠️ You can only send an email once every 60 minutes. Make it count! 💌</p>
 		<input type="email" name="to" placeholder="Your email address (don’t mess this up)" required />
 		<input type="text" name="title" placeholder="What’s the vibe? (Subject line)" required />
 		<textarea name="body" placeholder="This is your time to shine. Say something epic!" required></textarea>
-		<button type="submit">
-			🚀 Send It! 🚀
-			<span class="plane"></span>
-		</button>
+		<button type="submit">🚀 Send It! 🚀</button>
 		<p id="footer">No spam, just self-love and a little patience. 🕒</p>
 	</form>
-
-	<script>
-		document.getElementById('emailForm').addEventListener('submit', function (e) {
-			e.preventDefault(); // Prevent immediate form submission
-
-			const button = e.target.querySelector('button[type="submit"]');
-			const plane = button.querySelector('.plane');
-
-			// Trigger the animation
-			plane.style.transform = 'translate(-50%, -50%) scale(1)';
-
-			// Wait for the animation to complete, then submit the form
-			setTimeout(() => {
-				e.target.submit();
-			}, 1000); // Match the duration of the animation
-		});
-	</script>
 </body>
 
 </html>
