@@ -10,3 +10,7 @@ assets = { directory = "./public", binding = "ASSETS" }
 # Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
 [observability]
 enabled = true
+
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
